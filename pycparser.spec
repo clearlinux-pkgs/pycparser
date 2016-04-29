@@ -4,7 +4,7 @@
 #
 Name     : pycparser
 Version  : 2.14
-Release  : 18
+Release  : 19
 URL      : https://pypi.python.org/packages/source/p/pycparser/pycparser-2.14.tar.gz
 Source0  : https://pypi.python.org/packages/source/p/pycparser/pycparser-2.14.tar.gz
 Summary  : C parser in Python
