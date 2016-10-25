@@ -1,4 +1,5 @@
 PKG_NAME := pycparser
-URL := https://pypi.python.org/packages/source/p/pycparser/pycparser-2.14.tar.gz
+URL := http://pypi.debian.net/pycparser/pycparser-2.16.tar.gz
+ARCHIVES :=
 
 include ../common/Makefile.common
