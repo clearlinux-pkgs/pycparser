@@ -4,12 +4,13 @@
 #
 Name     : pycparser
 Version  : 2.18
-Release  : 30
+Release  : 31
 URL      : http://pypi.debian.net/pycparser/pycparser-2.18.tar.gz
 Source0  : http://pypi.debian.net/pycparser/pycparser-2.18.tar.gz
 Summary  : C parser in Python
 Group    : Development/Tools
 License  : BSD-3-Clause
+Requires: pycparser-legacypython
 Requires: pycparser-python
 BuildRequires : pbr
 BuildRequires : pip
@@ -18,14 +19,23 @@ BuildRequires : python3-dev
 BuildRequires : setuptools
 
 %description
-===============
-pycparser v2.18
-===============
-:Author: `Eli Bendersky <http://eli.thegreenplace.net>`_
+pycparser is a complete parser of the C language, written in
+                pure Python using the PLY parsing library.
+                It parses C code into an AST and can serve as a front-end for
+                C compilers or analysis tools.
+
+%package legacypython
+Summary: legacypython components for the pycparser package.
+Group: Default
+
+%description legacypython
+legacypython components for the pycparser package.
+
 
 %package python
 Summary: python components for the pycparser package.
 Group: Default
+Requires: pycparser-legacypython
 
 %description python
 python components for the pycparser package.
@@ -39,7 +49,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1499269076
+export SOURCE_DATE_EPOCH=1505056727
 python2 setup.py build -b py2
 python3 setup.py build -b py3
 
@@ -49,7 +59,7 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 python tests/all_tests.py
 %install
-export SOURCE_DATE_EPOCH=1499269076
+export SOURCE_DATE_EPOCH=1505056727
 rm -rf %{buildroot}
 python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
 python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
@@ -60,7 +70,10 @@ echo ----[ mark ]----
 %files
 %defattr(-,root,root,-)
 
-%files python
+%files legacypython
 %defattr(-,root,root,-)
 /usr/lib/python2*/*
+
+%files python
+%defattr(-,root,root,-)
 /usr/lib/python3*/*
