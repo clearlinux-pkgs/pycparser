@@ -1,8 +1,11 @@
 # This file contains recursive sources that require this package
 bash_kernel
+bcrypt
+ceph
 cffi
 cryptography
 ecdsa
+gensim
 ipykernel
 ipython
 ipython-sql
@@ -15,5 +18,7 @@ paramiko
 pyOpenSSL
 pypy
 pyzmq
+requests
 secretstorage
+smart_open
 urllib3
