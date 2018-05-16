@@ -4,7 +4,7 @@
 #
 Name     : pycparser
 Version  : 2.18
-Release  : 39
+Release  : 40
 URL      : http://pypi.debian.net/pycparser/pycparser-2.18.tar.gz
 Source0  : http://pypi.debian.net/pycparser/pycparser-2.18.tar.gz
 Summary  : C parser in Python
