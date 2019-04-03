@@ -3,6 +3,7 @@ Django
 acme
 certbot
 cffi
+deprecated-cffi
 pyOpenSSL
 pysaml2
 urllib3

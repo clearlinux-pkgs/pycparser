@@ -4,33 +4,23 @@
 #
 Name     : pycparser
 Version  : 2.19
-Release  : 53
+Release  : 54
 URL      : https://files.pythonhosted.org/packages/68/9e/49196946aee219aead1290e00d1e7fdeab8567783e83e1b9ab5585e6206a/pycparser-2.19.tar.gz
 Source0  : https://files.pythonhosted.org/packages/68/9e/49196946aee219aead1290e00d1e7fdeab8567783e83e1b9ab5585e6206a/pycparser-2.19.tar.gz
 Summary  : C parser in Python
 Group    : Development/Tools
 License  : BSD-3-Clause
-Requires: pycparser-python3
-Requires: pycparser-license
-Requires: pycparser-python
-BuildRequires : buildreq-distutils23
+Requires: pycparser-license = %{version}-%{release}
+Requires: pycparser-python = %{version}-%{release}
+Requires: pycparser-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
 BuildRequires : python-dev
 
 %description
-pycparser is a complete parser of the C language, written in
-                pure Python using the PLY parsing library.
-                It parses C code into an AST and can serve as a front-end for
-                C compilers or analysis tools.
-
-%package legacypython
-Summary: legacypython components for the pycparser package.
-Group: Default
-Requires: python-core
-
-%description legacypython
-legacypython components for the pycparser package.
-
+===============
+pycparser v2.19
+===============
+:Author: `Eli Bendersky <https://eli.thegreenplace.net/>`_
 
 %package license
 Summary: license components for the pycparser package.
@@ -66,9 +56,9 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1537755814
-python2 setup.py build -b py2
-python3 setup.py build -b py3
+export SOURCE_DATE_EPOCH=1554325501
+export MAKEFLAGS=%{?_smp_mflags}
+python3 setup.py build
 
 %check
 export http_proxy=http://127.0.0.1:9/
@@ -76,12 +66,11 @@ export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 python tests/all_tests.py
 %install
-export SOURCE_DATE_EPOCH=1537755814
+export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/pycparser
-cp LICENSE %{buildroot}/usr/share/doc/pycparser/LICENSE
-python2 -tt setup.py build -b py2 install --root=%{buildroot} --force
-python3 -tt setup.py build -b py3 install --root=%{buildroot} --force
+mkdir -p %{buildroot}/usr/share/package-licenses/pycparser
+cp LICENSE %{buildroot}/usr/share/package-licenses/pycparser/LICENSE
+python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
@@ -89,13 +78,9 @@ echo ----[ mark ]----
 %files
 %defattr(-,root,root,-)
 
-%files legacypython
-%defattr(-,root,root,-)
-/usr/lib/python2*/*
-
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/pycparser/LICENSE
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/pycparser/LICENSE
 
 %files python
 %defattr(-,root,root,-)
