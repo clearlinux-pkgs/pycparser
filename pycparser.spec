@@ -4,7 +4,7 @@
 #
 Name     : pycparser
 Version  : 2.19
-Release  : 56
+Release  : 57
 URL      : https://files.pythonhosted.org/packages/68/9e/49196946aee219aead1290e00d1e7fdeab8567783e83e1b9ab5585e6206a/pycparser-2.19.tar.gz
 Source0  : https://files.pythonhosted.org/packages/68/9e/49196946aee219aead1290e00d1e7fdeab8567783e83e1b9ab5585e6206a/pycparser-2.19.tar.gz
 Summary  : C parser in Python
@@ -14,13 +14,12 @@ Requires: pycparser-license = %{version}-%{release}
 Requires: pycparser-python = %{version}-%{release}
 Requires: pycparser-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
-BuildRequires : python-dev
 
 %description
-===============
-pycparser v2.19
-===============
-:Author: `Eli Bendersky <https://eli.thegreenplace.net/>`_
+pycparser is a complete parser of the C language, written in
+                pure Python using the PLY parsing library.
+                It parses C code into an AST and can serve as a front-end for
+                C compilers or analysis tools.
 
 %package license
 Summary: license components for the pycparser package.
@@ -55,8 +54,13 @@ python3 components for the pycparser package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1554325501
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1569441210
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 

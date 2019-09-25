@@ -1,9 +1,16 @@
 # This file contains recursive sources that require this package
 Django
 acme
+ceph
 certbot
 cffi
+conda
 deprecated-cffi
+deprecated-pyOpenSSL
+deprecated-urllib3
+koji
+mercurial
 pyOpenSSL
 pysaml2
+python-zstandard
 urllib3
