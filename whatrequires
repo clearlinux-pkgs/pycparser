@@ -5,10 +5,7 @@ ceph
 certbot
 cffi
 conda
-deprecated-cffi
-deprecated-pyOpenSSL
-deprecated-urllib3
-koji
+docker-py
 mercurial
 pyOpenSSL
 pysaml2

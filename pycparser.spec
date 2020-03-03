@@ -4,7 +4,7 @@
 #
 Name     : pycparser
 Version  : 2.19
-Release  : 61
+Release  : 62
 URL      : https://files.pythonhosted.org/packages/68/9e/49196946aee219aead1290e00d1e7fdeab8567783e83e1b9ab5585e6206a/pycparser-2.19.tar.gz
 Source0  : https://files.pythonhosted.org/packages/68/9e/49196946aee219aead1290e00d1e7fdeab8567783e83e1b9ab5585e6206a/pycparser-2.19.tar.gz
 Summary  : C parser in Python
@@ -17,9 +17,9 @@ BuildRequires : buildreq-distutils3
 
 %description
 pycparser is a complete parser of the C language, written in
-                pure Python using the PLY parsing library.
-                It parses C code into an AST and can serve as a front-end for
-                C compilers or analysis tools.
+        pure Python using the PLY parsing library.
+        It parses C code into an AST and can serve as a front-end for
+        C compilers or analysis tools.
 
 %package license
 Summary: license components for the pycparser package.
@@ -42,6 +42,7 @@ python components for the pycparser package.
 Summary: python3 components for the pycparser package.
 Group: Default
 Requires: python3-core
+Provides: pypi(pycparser)
 
 %description python3
 python3 components for the pycparser package.
@@ -49,13 +50,15 @@ python3 components for the pycparser package.
 
 %prep
 %setup -q -n pycparser-2.19
+cd %{_builddir}/pycparser-2.19
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569441210
+export SOURCE_DATE_EPOCH=1583205460
+# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$CFLAGS -fno-lto "
@@ -73,7 +76,7 @@ python tests/all_tests.py
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/pycparser
-cp LICENSE %{buildroot}/usr/share/package-licenses/pycparser/LICENSE
+cp %{_builddir}/pycparser-2.19/LICENSE %{buildroot}/usr/share/package-licenses/pycparser/3a3d1c2cf8d81b9a4a823d5f3a865480f9b64977
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -84,7 +87,7 @@ echo ----[ mark ]----
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/pycparser/LICENSE
+/usr/share/package-licenses/pycparser/3a3d1c2cf8d81b9a4a823d5f3a865480f9b64977
 
 %files python
 %defattr(-,root,root,-)
