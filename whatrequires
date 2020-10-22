@@ -1,13 +1,12 @@
 # This file contains recursive sources that require this package
+Cura
 Django
 acme
-ceph
 certbot
 cffi
 conda
 docker-py
 mercurial
 pyOpenSSL
-pysaml2
 python-zstandard
 urllib3

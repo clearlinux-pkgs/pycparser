@@ -4,7 +4,7 @@
 #
 Name     : pycparser
 Version  : 2.20
-Release  : 65
+Release  : 66
 URL      : https://files.pythonhosted.org/packages/0f/86/e19659527668d70be91d0369aeaa055b4eb396b0f387a4f92293a20035bd/pycparser-2.20.tar.gz
 Source0  : https://files.pythonhosted.org/packages/0f/86/e19659527668d70be91d0369aeaa055b4eb396b0f387a4f92293a20035bd/pycparser-2.20.tar.gz
 Summary  : C parser in Python
@@ -17,9 +17,9 @@ BuildRequires : buildreq-distutils3
 
 %description
 pycparser is a complete parser of the C language, written in
-pure Python using the PLY parsing library.
-It parses C code into an AST and can serve as a front-end for
-C compilers or analysis tools.
+                pure Python using the PLY parsing library.
+                It parses C code into an AST and can serve as a front-end for
+                C compilers or analysis tools.
 
 %package license
 Summary: license components for the pycparser package.
@@ -57,12 +57,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1583340332
-# -Werror is for werrorists
+export SOURCE_DATE_EPOCH=1603399952
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
