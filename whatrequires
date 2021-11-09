@@ -2,10 +2,12 @@
 Cura
 Django
 acme
+ansible
 certbot
 cffi
 conda
 docker-py
+lutris
 mercurial
 pyOpenSSL
 python-zstandard
